@@ -16,4 +16,12 @@ app.use(express.static("public"));  //koi bhi file jo hum apne local server pe r
 app.use(cookieParser());            //kisi user ke browser me jo cookie hoti hai usko parse krne ke liye
                                     //parse me kya hota hai ki koi data aata hai toh usko hum readable form me convert krte hai
 
+//routes import
+import userRouter from './routes/user.routes.js'
+
+//routes declaration
+app.use("/api/v1/users", userRouter)
+
+
+//http://localhost:8000/api/v1/users/register
 export { app };
