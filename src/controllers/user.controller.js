@@ -117,8 +117,9 @@ const loginUser = asyncHandler(async(req, res) => {
 
   const options = {
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
-  sameSite: "lax"
+  secure: false,
+  sameSite: "lax",
+  maxAge: 10 * 24 * 60 * 60 * 1000 // <-- added this line to avoid expiration
 };
 
 
@@ -191,7 +192,8 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
     const options = {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "lax"
+      sameSite: "lax",
+      maxAge: 10*24*60*60*1000 // 10 days
     };
 
     return res
